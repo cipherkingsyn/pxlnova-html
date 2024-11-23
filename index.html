@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Proxy</title>
+    <title>pxlnova-html</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,7 +55,7 @@
 <body>
 
 <div class="container">
-    <h1>URL Proxy</h1>
+    <h1>pxlnova html</h1>
     <p>Enter a URL to proxy or type a search term to use Google.</p>
     <form id="proxyForm" action="" method="GET">
         <input type="text" id="urlInput" name="url" placeholder="Enter URL or search term">
@@ -64,29 +64,25 @@
     </form>
 </div>
 
-<!-- This is where the iframe will be inserted if a URL is valid -->
 <div id="iframeContainer" style="display: none;">
     <iframe id="proxyIframe" title="Proxy"></iframe>
 </div>
 
 <script>
     document.getElementById('proxyForm').addEventListener('submit', function(event) {
-        event.preventDefault();  // Prevent form from submitting the traditional way
+        event.preventDefault();  
 
         let input = document.getElementById('urlInput').value.trim();
         let iframeContainer = document.getElementById('iframeContainer');
         let iframe = document.getElementById('proxyIframe');
 
-        // Hide iframe by default
         iframeContainer.style.display = 'none';
 
-        // Check if the input is a valid URL (simple check for 'http' or 'https')
         if (input.match(/^https?:\/\//)) {
-            // If it's a valid URL, display iframe with that URL
+            
             iframeContainer.style.display = 'block';
             iframe.src = input;
         } else if (input) {
-            // If it's not a URL, treat it as a Google search term
             window.location.href = `https://www.google.com/search?q=${encodeURIComponent(input)}`;
         } else {
             alert("Please enter a valid URL or search term.");
